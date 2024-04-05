@@ -4,6 +4,7 @@ import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -137,7 +138,8 @@ fun DetailsScreen(
                 Icon(painter = painterResource(id = R.drawable.ic_download),
                     contentDescription = "",
                     tint = DarkLow,
-                    modifier = Modifier.size(ICON_SIZE)
+                    modifier = Modifier
+                        .size(ICON_SIZE)
                         .clickable {
                             uriHandler.openUri(game.game_url.toString())
                         })
@@ -145,7 +147,8 @@ fun DetailsScreen(
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .padding(bottom = MEDIUM_PADDING, top = MEDIUM_PADDING),
+                    .padding(bottom = MEDIUM_PADDING, top = MEDIUM_PADDING)
+                    .horizontalScroll(rememberScrollState()),
                 horizontalArrangement = Arrangement.SpaceBetween
             ) {
                 InfoBox(icon = painterResource(id = R.drawable.ic_genre),

@@ -86,7 +86,7 @@ fun HomeScreen(
         Box(modifier = Modifier
             .fillMaxWidth()
             .background(DarkHigh)){
-            if(viewModel.isFilterOpen){
+            if(viewModel.isFilterOpen && !openFilterDialog){
                 Icon(imageVector = Icons.Default.ArrowBack,
                     contentDescription = stringResource(R.string.back_icon),
                     modifier = Modifier
