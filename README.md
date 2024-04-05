@@ -20,3 +20,5 @@
 
 👉 Stay tuned as we continue to innovate and enhance your gaming experience further. Your feedback and support are invaluable to us as we strive to push boundaries and set new standards in the world of mobile gaming. 👈
 
+
+https://github.com/Ronny2411/FTGame/assets/41182036/33717437-a239-4b5c-a070-89e9fbf8c125
