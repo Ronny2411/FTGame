@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">FTGame</string>
+    <string name="game_image">Game Image</string>
+    <string name="web_browser">Web Browser</string>
+    <string name="windows">Windows</string>
+    <string name="app_logo">App Logo</string>
+    <string name="network_error_icon">Network Error Icon</string>
+    <string name="back_icon">Back Icon</string>
+    <string name="bookmark_icon">Bookmark Icon</string>
+    <string name="info_icon">Info Icon</string>
+</resources>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="App.Starting.Theme" parent="Theme.SplashScreen">
+        <item name="windowSplashScreenBackground">#070F2B</item>
+        <item name="windowSplashScreenAnimatedIcon">@mipmap/splash_foreground</item>
+        <item name="postSplashScreenTheme">@style/Theme.GameMingle</item>
+    </style>
+</resources>
