@@ -17,14 +17,12 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
-import androidx.paging.compose.collectAsLazyPagingItems
 import com.ronny.gamemingle.R
 import com.ronny.gamemingle.presentation.common.AnimateDetailSimmerItem
 import com.ronny.gamemingle.presentation.common.EmptyScreen
 import com.ronny.gamemingle.presentation.details.DetailsScreen
 import com.ronny.gamemingle.presentation.details.DetailsViewModel
 import com.ronny.gamemingle.presentation.home.HomeScreen
-import com.ronny.gamemingle.presentation.home.HomeViewModel
 import com.ronny.gamemingle.ui.theme.DarkHigh
 
 @Composable
