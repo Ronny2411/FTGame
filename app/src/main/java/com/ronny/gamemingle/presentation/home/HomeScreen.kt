@@ -1,5 +1,7 @@
 package com.ronny.gamemingle.presentation.home
 
+import android.app.Activity
+import androidx.activity.compose.BackHandler
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -11,6 +13,8 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material3.Icon
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -20,6 +24,7 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
@@ -52,34 +57,56 @@ fun HomeScreen(
     var openFilterDialog by remember {
         mutableStateOf(false)
     }
-    val categoryList = listOf("mmorpg", "shooter", "strategy", "moba",
-        "racing", "sports", "social", "sandbox", "open-world", "survival", "pvp",
-        "pve", "pixel", "voxel", "zombie", "turn-based", "first-person", "third-Person",
-        "top-down", "tank", "space", "sailing", "side-scroller", "superhero", "permadeath",
-        "card", "battle-royale", "mmo", "mmofps", "mmotps", "3d", "2d", "anime", "fantasy",
-        "sci-fi", "fighting", "action-rpg", "action", "military", "martial-arts", "flight",
-        "low-spec", "tower-defense", "horror", "mmorts")
-
     var categoryMap by remember {
-        mutableStateOf(
-            categoryList.map {
-                ListItem(
-                    title = it,
-                    isSelected = false
-                )
-            }
-        )
+        viewModel.filterTag
     }
     val platform = listOf("PC", "Browser", "All")
-    val (selectedPlatform, setSelectedPlatform) = remember { mutableStateOf("All") }
+    var (selectedPlatform, setSelectedPlatform) = remember { mutableStateOf(viewModel.filterPlatform) }
     val sortBy = listOf("Release-Date", "Popularity", "Alphabetical", "Relevance")
-    val (selectedSortBy, setSelectedSortBy) = remember { mutableStateOf("Relevance") }
+    var (selectedSortBy, setSelectedSortBy) = remember { mutableStateOf(viewModel.filterSortBy) }
+    viewModel.filterPlatform = selectedPlatform
+    viewModel.filterSortBy = selectedSortBy
+    val activity = LocalContext.current as Activity
+    BackHandler {
+        if (openFilterDialog){
+            openFilterDialog = false
+        }
+        else if (viewModel.isFilterOpen){
+            setSelectedPlatform("All")
+            setSelectedSortBy("Relevance")
+            for (i in 0..categoryMap.size - 1) {
+                categoryMap[i].isSelected = false
+            }
+            viewModel.isFilterOpen = false
+            viewModel.resetGameList()
+        } else {
+            activity.finish()
+        }
+    }
     Column(modifier = Modifier
         .fillMaxSize()
         .background(DarkHigh)) {
         Box(modifier = Modifier
             .fillMaxWidth()
             .background(DarkHigh)){
+            if(viewModel.isFilterOpen){
+                Icon(imageVector = Icons.Default.ArrowBack,
+                    contentDescription = stringResource(R.string.back_icon),
+                    modifier = Modifier
+                        .padding(start = SMALL_PADDING)
+                        .size(ICON_SIZE)
+                        .align(Alignment.CenterStart)
+                        .clickable {
+                            setSelectedPlatform("All")
+                            setSelectedSortBy("Relevance")
+                            for (i in 0..categoryMap.size - 1) {
+                                categoryMap[i].isSelected = false
+                            }
+                            viewModel.isFilterOpen = false
+                            viewModel.resetGameList()
+                        },
+                    tint = DarkLow)
+            }
             Image(painter = painterResource(id = R.drawable.freetogame_logo),
                 contentDescription = stringResource(R.string.app_logo),
                 modifier = Modifier
@@ -102,10 +129,10 @@ fun HomeScreen(
             DisplayFilterFragment(
                 categoryMap,
                 platform,
-                selectedPlatform,
+                viewModel.filterPlatform,
                 setSelectedPlatform,
                 sortBy,
-                selectedSortBy,
+                viewModel.filterSortBy,
                 setSelectedSortBy,
                 onResetClick = {
                     setSelectedPlatform("All")
@@ -144,7 +171,9 @@ fun HomeScreen(
                     items(count = gamesList.itemCount){
                         gamesList[it]?.let {game->
                             GameCard(game = game) {
-                                navController.navigate(Route.DetailsScreen.createRoute(it.toString()))
+                                navController.navigate(
+                                    Route.DetailsScreen.createRoute(it.toString())
+                                )
                             }
                         }
                     }
