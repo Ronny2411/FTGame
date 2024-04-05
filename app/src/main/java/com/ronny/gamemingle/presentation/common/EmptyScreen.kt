@@ -2,7 +2,6 @@ package com.ronny.gamemingle.presentation.common
 
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.tween
-import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -37,7 +36,6 @@ import com.ronny.gamemingle.domain.model.GameListItem
 import com.ronny.gamemingle.ui.theme.NETWORK_ERROR_ICON_SIZE
 import com.ronny.gamemingle.ui.theme.SMALL_PADDING
 import com.ronny.gamemingle.ui.theme.ShimmerLightGrey
-import com.ronny.gamemingle.ui.theme.ShimmerMediumGrey
 import java.net.ConnectException
 import java.net.SocketTimeoutException
 

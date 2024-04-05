@@ -20,7 +20,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
-import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -38,7 +37,6 @@ import com.ronny.gamemingle.domain.model.GameListItem
 import com.ronny.gamemingle.presentation.common.DisplayFilterFragment
 import com.ronny.gamemingle.presentation.common.EmptyScreen
 import com.ronny.gamemingle.presentation.common.GameCard
-import com.ronny.gamemingle.presentation.common.ListItem
 import com.ronny.gamemingle.presentation.common.ShimmerEffect
 import com.ronny.gamemingle.presentation.navigation.Route
 import com.ronny.gamemingle.ui.theme.DarkHigh
@@ -46,7 +44,6 @@ import com.ronny.gamemingle.ui.theme.DarkLow
 import com.ronny.gamemingle.ui.theme.ICON_SIZE
 import com.ronny.gamemingle.ui.theme.MEDIUM_PADDING
 import com.ronny.gamemingle.ui.theme.SMALL_PADDING
-import java.util.Locale
 
 @Composable
 fun HomeScreen(

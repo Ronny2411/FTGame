@@ -115,7 +115,7 @@ fun ShimmerItem(alpha: Float) {
                 .fillMaxHeight(0.55f)
                 .height(NAME_PLACEHOLDER_HEIGHT),
                 color = DarkLow,
-                shape = RoundedCornerShape(SMALL_PADDING)
+                shape = RoundedCornerShape(EXTRA_SMALL_PADDING)
             ) {}
             Spacer(modifier = Modifier.padding(SMALL_PADDING))
             Surface(modifier = Modifier
@@ -123,7 +123,7 @@ fun ShimmerItem(alpha: Float) {
                 .fillMaxWidth(0.5f)
                 .height(NAME_PLACEHOLDER_HEIGHT),
                 color = DarkLow,
-                shape = RoundedCornerShape(MEDIUM_PADDING)
+                shape = RoundedCornerShape(SMALL_PADDING)
             ) {}
             Spacer(modifier = Modifier.padding(SMALL_PADDING))
             repeat(2){
